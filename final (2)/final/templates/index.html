@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transpiler (C to Python)</title>
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <h1>Transpiler (C → Python)</h1>
+
+  <div id="container">
+    <div class="editor">
+      <h2>C Code</h2>
+      <textarea id="c-code" placeholder="Write your C code here..."></textarea>
+    </div>
+    <div class="editor">
+      <h2>Python Code</h2>
+      <textarea id="python-code" placeholder="Translated Python code will appear here..." readonly></textarea>
+    </div>
+  </div>
+
+  <div class="button-wrapper">
+    <button id="convert-btn">Convert</button>
+    
+  </div>
+   <div>
+    <button id="thinking-btn" class="fancy-button" onclick="enterTool()">
+  🤔 You want to Know ?????
+</button>
+</div>
+<script>
+  function enterTool() {
+    window.location.href = "http://localhost:8501";  // Change this to your visualizer page URL
+  }
+</script>
+
+
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    document.getElementById('convert-btn').addEventListener('click', async () => {
+      const cCode = document.getElementById('c-code').value;
+      const response = await fetch('/convert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ c_code: cCode })
+      });
+
+      const result = await response.json();
+      document.getElementById('python-code').value = result.python_code || 'Error occurred';
+    });
+  </script>
+
+</body>
+</html>
