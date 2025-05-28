@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>C → Python Transpiler</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #2d2d44);
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 20px;
+      margin: 2rem;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    h1 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #00e6e6, #66ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #00e6e6; }
+      100% { text-shadow: 0 0 20px #66ffcc; }
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      line-height: 1.6;
+      margin: 1rem 0 2rem;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      background: #00e6e6;
+      border: none;
+      color: #111;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00e6e6, 0 0 20px #00e6e6;
+    }
+
+    .btn:hover {
+      background: #66ffcc;
+      box-shadow: 0 0 20px #66ffcc, 0 0 40px #66ffcc;
+      transform: scale(1.05);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      text-align: center;
+      width: 100%;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="container">
+    <h1>C → Python Transpiler</h1>
+    <p>
+      Welcome to <strong>C2Py Transpiler</strong>, a tool that bridges the gap between low-level procedural C code
+      and high-level Python! Our intelligent engine parses, tokenizes, builds abstract syntax trees, and generates
+      equivalent Python code — making cross-language development easier and faster.
+    </p>
+    <button class="btn" onclick="enterTool()">🚀 Launch Transpiler</button>
+  </div>
+
+  <footer>Created by Piyush Joshi | Transpiler Project 2025</footer>
+
+  <script>
+  function enterTool() {
+    window.location.href = "http://127.0.0.1:5000"; // or your actual deployed URL
+  }
+</script>
+
+</body>
+</html>
